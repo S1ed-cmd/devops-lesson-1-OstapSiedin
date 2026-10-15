@@ -1,0 +1,15 @@
+name: gh_test_python
+on: [push]
+jobs:
+  Py_Run_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install pytest
+        uses: actions/checkout@v6
+      - run:  python -m pip install -r requirements.txt
+      - name: Check environment
+        run:  bash scripts/check-env.sh
+      - name: Check python version
+        run:  python --version
+      - name: Run Tests
+        run:  pytest
